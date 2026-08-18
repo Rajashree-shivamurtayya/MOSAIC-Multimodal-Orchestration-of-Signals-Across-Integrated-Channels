@@ -2,8 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 
+interface Trial {
+  id: string | number;
+  participant: string;
+  status: string;
+  prediction?: string;
+  confidence?: number;
+}
+
 export default function DashboardData() {
-  const [trials, setTrials] = useState<any[]>([]);
+  const [trials, setTrials] = useState<Trial[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -39,7 +47,7 @@ export default function DashboardData() {
                 </p>
               </div>
               
-              {trial.prediction && (
+              {trial.prediction && trial.confidence !== undefined && (
                 <div className="text-right">
                   <p className="font-bold text-[var(--color-brand-primary)] uppercase text-sm tracking-wider">
                     {trial.prediction}

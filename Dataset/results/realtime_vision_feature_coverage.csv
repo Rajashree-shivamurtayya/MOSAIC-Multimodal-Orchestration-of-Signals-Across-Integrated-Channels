@@ -1,0 +1,121 @@
+feature_name,required_by_model,implemented_realtime,source,reason_if_missing,uses_nan,training_feature_range,realtime_range_if_available,importance
+face_area_pixels,YES,NO,None,Requires deep emotion/AU model,YES,17719.00 to 108604.00,NaN,HIGH
+face_detected,YES,YES,MediaPipe,,NO,0.00 to 1.00,Varies,LOW
+face_detection_confidence,YES,NO,None,Requires deep emotion/AU model,YES,0.80 to 1.00,NaN,LOW
+face_height_pixels,YES,NO,None,Requires deep emotion/AU model,YES,152.90 to 378.60,NaN,MEDIUM
+face_occlusion_ratio,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.28,NaN,MEDIUM
+face_width_pixels,YES,NO,None,Requires deep emotion/AU model,YES,115.90 to 286.80,NaN,MEDIUM
+landmark_detection_confidence,YES,NO,None,Requires deep emotion/AU model,YES,0.77 to 1.00,NaN,LOW
+baseline_left_eye_openness,YES,YES,MediaPipe,,NO,0.21 to 0.35,Varies,HIGH
+baseline_right_eye_openness,YES,YES,MediaPipe,,NO,0.21 to 0.35,Varies,LOW
+blink_count,YES,YES,MediaPipe,,NO,0.00 to 27.00,Varies,LOW
+blink_delta_pre_to_answer,YES,NO,None,Requires deep emotion/AU model,YES,-18.69 to 29.23,NaN,MEDIUM
+blink_duration_std,YES,NO,None,Requires deep emotion/AU model,YES,20.60 to 85.70,NaN,LOW
+blink_rate_per_minute,YES,NO,None,Requires deep emotion/AU model,YES,3.00 to 42.99,NaN,LOW
+eye_aspect_ratio_left,YES,NO,None,Requires deep emotion/AU model,YES,0.20 to 0.37,NaN,HIGH
+eye_aspect_ratio_right,YES,NO,None,Requires deep emotion/AU model,YES,0.21 to 0.37,NaN,MEDIUM
+eye_closure_duration_ms,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 7342.30,NaN,HIGH
+eye_openness_variance,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.01,NaN,LOW
+left_eye_openness,YES,YES,MediaPipe,,NO,0.20 to 0.37,Varies,HIGH
+left_eye_openness_delta,YES,YES,MediaPipe,,NO,-0.05 to 0.05,Varies,LOW
+long_blink_count,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,MEDIUM
+mean_eye_aspect_ratio,YES,NO,None,Requires deep emotion/AU model,YES,0.21 to 0.36,NaN,HIGH
+right_eye_openness,YES,YES,MediaPipe,,NO,0.21 to 0.37,Varies,MEDIUM
+right_eye_openness_delta,YES,YES,MediaPipe,,NO,-0.05 to 0.06,Varies,MEDIUM
+baseline_left_eyebrow_eye_distance,YES,YES,MediaPipe,,NO,0.29 to 0.58,Varies,MEDIUM
+baseline_right_eyebrow_eye_distance,YES,YES,MediaPipe,,NO,0.29 to 0.55,Varies,LOW
+eyebrow_asymmetry,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.05,NaN,LOW
+eyebrow_movement_score,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.10,NaN,LOW
+eyebrow_raise_duration_ms,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 815.40,NaN,LOW
+eyebrow_raise_event_count,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 8.00,NaN,MEDIUM
+eyebrow_raise_rise_time_ms,YES,NO,None,Requires deep emotion/AU model,YES,80.00 to 567.10,NaN,MEDIUM
+left_eyebrow_acceleration,YES,NO,None,Requires deep emotion/AU model,YES,-12.43 to 17.15,NaN,MEDIUM
+left_eyebrow_eye_distance,YES,YES,MediaPipe,,NO,0.26 to 0.62,Varies,LOW
+left_eyebrow_height_delta,YES,YES,MediaPipe,,NO,-0.05 to 0.11,Varies,HIGH
+left_eyebrow_movement_std,YES,YES,MediaPipe,,NO,0.00 to 0.04,Varies,MEDIUM
+left_eyebrow_peak_raise,YES,YES,MediaPipe,,NO,-0.14 to 0.29,Varies,HIGH
+left_eyebrow_raise_ratio,YES,YES,MediaPipe,,NO,0.87 to 1.26,Varies,HIGH
+left_eyebrow_velocity,YES,NO,None,Requires deep emotion/AU model,YES,-0.70 to 0.81,NaN,HIGH
+right_eyebrow_acceleration,YES,NO,None,Requires deep emotion/AU model,YES,-10.22 to 8.49,NaN,LOW
+right_eyebrow_eye_distance,YES,YES,MediaPipe,,NO,0.27 to 0.58,Varies,MEDIUM
+right_eyebrow_height_delta,YES,YES,MediaPipe,,NO,-0.04 to 0.09,Varies,HIGH
+right_eyebrow_movement_std,YES,YES,MediaPipe,,NO,0.00 to 0.03,Varies,LOW
+right_eyebrow_peak_raise,YES,YES,MediaPipe,,NO,-0.11 to 0.15,Varies,LOW
+right_eyebrow_raise_ratio,YES,YES,MediaPipe,,NO,0.89 to 1.21,Varies,LOW
+right_eyebrow_velocity,YES,NO,None,Requires deep emotion/AU model,YES,-0.74 to 0.65,NaN,HIGH
+baseline_gaze_x,YES,NO,None,Requires deep emotion/AU model,YES,-0.20 to 0.20,NaN,LOW
+baseline_gaze_y,YES,NO,None,Requires deep emotion/AU model,YES,-0.18 to 0.19,NaN,LOW
+gaze_deviation_degrees,YES,NO,None,Requires deep emotion/AU model,YES,0.20 to 20.75,NaN,MEDIUM
+gaze_horizontal_deviation,YES,NO,None,Requires deep emotion/AU model,YES,0.13 to 27.45,NaN,LOW
+gaze_shift_count,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 12.00,NaN,MEDIUM
+gaze_shift_frequency,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 9.99,NaN,HIGH
+gaze_stability,YES,NO,None,Requires deep emotion/AU model,YES,0.10 to 1.00,NaN,MEDIUM
+gaze_velocity_deg_s,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 122.20,NaN,MEDIUM
+gaze_vertical_deviation,YES,NO,None,Requires deep emotion/AU model,YES,0.05 to 21.43,NaN,MEDIUM
+gaze_x,YES,NO,None,Requires deep emotion/AU model,YES,-1.00 to 1.00,NaN,LOW
+gaze_x_delta,YES,YES,MediaPipe,,NO,-1.14 to 1.16,Varies,LOW
+gaze_y,YES,NO,None,Requires deep emotion/AU model,YES,-1.00 to 1.00,NaN,LOW
+gaze_y_delta,YES,YES,MediaPipe,,NO,-1.10 to 1.17,Varies,LOW
+looking_away_ratio,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.88,NaN,LOW
+time_looking_at_camera_seconds,YES,NO,None,Requires deep emotion/AU model,YES,0.23 to 36.86,NaN,HIGH
+time_looking_away_seconds,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 37.71,NaN,MEDIUM
+baseline_head_pitch,YES,YES,MediaPipe,,NO,-4.88 to 3.93,Varies,LOW
+baseline_head_roll,YES,YES,MediaPipe,,NO,-3.37 to 3.29,Varies,MEDIUM
+baseline_head_yaw,YES,YES,MediaPipe,,NO,-11.02 to 11.01,Varies,LOW
+head_motion_score,YES,NO,None,Requires deep emotion/AU model,YES,0.03 to 1.36,NaN,MEDIUM
+head_movement_count,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 14.00,NaN,LOW
+head_movement_velocity_deg_s,YES,NO,None,Requires deep emotion/AU model,YES,0.66 to 71.03,NaN,LOW
+head_pitch_degrees,YES,YES,MediaPipe,,NO,-26.67 to 19.80,Varies,LOW
+head_pitch_delta,YES,YES,MediaPipe,,NO,-26.41 to 20.33,Varies,LOW
+head_pitch_std,YES,YES,MediaPipe,,NO,0.20 to 10.55,Varies,HIGH
+head_roll_degrees,YES,YES,MediaPipe,,NO,-14.89 to 18.71,Varies,LOW
+head_roll_delta,YES,YES,MediaPipe,,NO,-14.03 to 18.29,Varies,LOW
+head_roll_std,YES,YES,MediaPipe,,NO,0.10 to 8.14,Varies,MEDIUM
+head_yaw_degrees,YES,YES,MediaPipe,,NO,-24.33 to 30.28,Varies,LOW
+head_yaw_delta,YES,YES,MediaPipe,,NO,-23.85 to 29.54,Varies,LOW
+head_yaw_std,YES,YES,MediaPipe,,NO,0.30 to 14.78,Varies,MEDIUM
+angry_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.17,NaN,LOW
+disgust_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.08,NaN,MEDIUM
+expression_change_count,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 10.00,NaN,LOW
+expression_entropy,YES,NO,None,Requires deep emotion/AU model,YES,0.19 to 1.82,NaN,HIGH
+expression_stability,YES,NO,None,Requires deep emotion/AU model,YES,0.09 to 1.00,NaN,MEDIUM
+facial_expression_confidence,YES,NO,None,Requires deep emotion/AU model,YES,0.28 to 0.95,NaN,HIGH
+fear_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.44,NaN,LOW
+happy_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.02 to 0.29,NaN,HIGH
+neutral_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.09 to 0.97,NaN,HIGH
+sad_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.24,NaN,MEDIUM
+surprise_expression_probability,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.38,NaN,LOW
+au01_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.77,NaN,MEDIUM
+au02_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,MEDIUM
+au04_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,MEDIUM
+au05_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.57,NaN,LOW
+au06_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 3.85,NaN,LOW
+au07_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.45,NaN,LOW
+au09_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.18,NaN,MEDIUM
+au10_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.50,NaN,LOW
+au12_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 3.75,NaN,MEDIUM
+au14_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,LOW
+au15_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.73,NaN,LOW
+au17_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,LOW
+au20_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.43,NaN,MEDIUM
+au23_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,MEDIUM
+au25_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 3.96,NaN,LOW
+au26_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 4.41,NaN,LOW
+au45_intensity,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 5.00,NaN,LOW
+facial_action_unit_activity,YES,NO,None,Requires deep emotion/AU model,YES,0.17 to 2.09,NaN,LOW
+facial_movement_score,YES,NO,None,Requires deep emotion/AU model,YES,0.17 to 1.82,NaN,LOW
+jaw_movement_score,YES,NO,None,Requires deep emotion/AU model,YES,0.37 to 1.03,NaN,LOW
+lip_movement_score,YES,NO,None,Requires deep emotion/AU model,YES,0.58 to 1.23,NaN,MEDIUM
+mouth_aspect_ratio,YES,NO,None,Requires deep emotion/AU model,YES,0.23 to 0.61,NaN,MEDIUM
+mouth_movement_frequency,YES,NO,None,Requires deep emotion/AU model,YES,2.09 to 6.03,NaN,HIGH
+body_motion_score,YES,NO,None,Requires deep emotion/AU model,YES,0.01 to 0.85,NaN,LOW
+lean_forward_ratio,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 0.76,NaN,MEDIUM
+posture_change_count,YES,NO,None,Requires deep emotion/AU model,YES,0.00 to 7.00,NaN,LOW
+shoulder_angle_degrees,YES,NO,None,Requires deep emotion/AU model,YES,-8.07 to 9.35,NaN,LOW
+facial_landmark_acceleration_mean,YES,NO,None,Requires deep emotion/AU model,YES,0.04 to 0.78,NaN,LOW
+facial_landmark_velocity_max,YES,NO,None,Requires deep emotion/AU model,YES,0.02 to 0.39,NaN,MEDIUM
+facial_landmark_velocity_mean,YES,NO,None,Requires deep emotion/AU model,YES,0.01 to 0.12,NaN,LOW
+facial_motion_mean,YES,YES,MediaPipe,,NO,0.29 to 1.53,Varies,LOW
+facial_motion_peak,YES,YES,MediaPipe,,NO,0.46 to 3.62,Varies,MEDIUM
+facial_motion_std,YES,YES,MediaPipe,,NO,0.07 to 0.94,Varies,MEDIUM
+video_available,YES,YES,MediaPipe,,NO,0.00 to 1.00,Varies,LOW

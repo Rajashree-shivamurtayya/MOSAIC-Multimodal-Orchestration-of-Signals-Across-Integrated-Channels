@@ -1,0 +1,84 @@
+feature_name,required_by_model,implemented_realtime,source,reason_if_missing,uses_nan,training_feature_range,realtime_range_if_available,importance
+articulation_rate_wpm,YES,NO,None,Requires ASR System,YES,82.70 to 218.40,NaN,LOW
+audio_duration_seconds,YES,YES,Librosa/VAD,,NO,0.36 to 48.85,Varies,MEDIUM
+response_latency_ms,YES,YES,Librosa/VAD,,NO,140.00 to 2353.20,Varies,HIGH
+silence_duration_seconds,YES,YES,Librosa/VAD,,NO,0.00 to 8.45,Varies,HIGH
+speaking_rate_wpm,YES,NO,None,Requires ASR System,YES,82.70 to 218.40,NaN,LOW
+speech_duration_seconds,YES,YES,Librosa/VAD,,NO,0.28 to 42.83,Varies,LOW
+speech_hesitation_score,YES,NO,None,Requires ASR System,YES,-0.68 to 10.52,NaN,MEDIUM
+speech_to_silence_ratio,YES,NO,None,Requires ASR System,YES,0.27 to 1307.30,NaN,LOW
+syllable_rate,YES,NO,None,Requires ASR System,YES,1.96 to 7.77,NaN,MEDIUM
+time_to_first_word_ms,YES,NO,None,Requires ASR System,YES,140.00 to 2420.70,NaN,HIGH
+word_count,YES,NO,None,Requires ASR System,YES,1.00 to 75.00,NaN,MEDIUM
+long_pause_count,YES,NO,None,Requires ASR System,YES,0.00 to 7.00,NaN,HIGH
+max_pause_duration_ms,YES,YES,Librosa/VAD,,NO,98.20 to 1902.00,Varies,HIGH
+mean_pause_duration_ms,YES,YES,Librosa/VAD,,NO,90.00 to 835.50,Varies,HIGH
+pause_count,YES,YES,Librosa/VAD,,NO,0.00 to 14.00,Varies,MEDIUM
+pause_duration_std,YES,NO,None,Requires ASR System,YES,10.00 to 493.20,NaN,MEDIUM
+pause_ratio,YES,YES,Librosa/VAD,,NO,0.00 to 0.72,Varies,MEDIUM
+short_pause_count,YES,NO,None,Requires ASR System,YES,0.00 to 8.00,NaN,LOW
+ah_count,YES,NO,None,Requires ASR System,YES,0.00 to 5.00,NaN,LOW
+er_count,YES,NO,None,Requires ASR System,YES,0.00 to 3.00,NaN,MEDIUM
+filler_word_count,YES,NO,None,Requires ASR System,YES,0.00 to 19.00,NaN,HIGH
+filler_word_rate,YES,NO,None,Requires ASR System,YES,0.00 to 2.50,NaN,LOW
+like_count,YES,NO,None,Requires ASR System,YES,0.00 to 4.00,NaN,HIGH
+other_filler_count,YES,NO,None,Requires ASR System,YES,0.00 to 2.00,NaN,MEDIUM
+uh_count,YES,NO,None,Requires ASR System,YES,0.00 to 13.00,NaN,MEDIUM
+um_count,YES,NO,None,Requires ASR System,YES,0.00 to 10.00,NaN,HIGH
+you_know_count,YES,NO,None,Requires ASR System,YES,0.00 to 3.00,NaN,LOW
+block_count,YES,NO,None,Requires ASR System,YES,0.00 to 3.00,NaN,LOW
+false_start_count,YES,NO,None,Requires ASR System,YES,0.00 to 5.00,NaN,LOW
+hesitation_count,YES,NO,None,Requires ASR System,YES,0.00 to 24.00,NaN,MEDIUM
+hesitation_rate,YES,NO,None,Requires ASR System,YES,0.00 to 7.39,NaN,MEDIUM
+prolongation_count,YES,NO,None,Requires ASR System,YES,0.00 to 7.00,NaN,LOW
+repetition_count,YES,NO,None,Requires ASR System,YES,0.00 to 9.00,NaN,LOW
+self_correction_count,YES,NO,None,Requires ASR System,YES,0.00 to 5.00,NaN,HIGH
+sound_repetition_count,YES,NO,None,Requires ASR System,YES,0.00 to 3.00,NaN,LOW
+stutter_detected,YES,NO,None,Requires ASR System,YES,0.00 to 1.00,NaN,HIGH
+stutter_event_count,YES,NO,None,Requires ASR System,YES,0.00 to 14.00,NaN,LOW
+stutter_frequency,YES,NO,None,Requires ASR System,YES,0.00 to 2.00,NaN,HIGH
+syllable_repetition_count,YES,NO,None,Requires ASR System,YES,0.00 to 5.00,NaN,LOW
+word_repetition_count,YES,NO,None,Requires ASR System,YES,0.00 to 7.00,NaN,MEDIUM
+hnr_db,YES,NO,None,Requires ASR System,YES,12.61 to 29.09,NaN,MEDIUM
+jitter_percent,YES,NO,None,Requires ASR System,YES,0.10 to 1.81,NaN,HIGH
+max_pitch_hz,YES,YES,Librosa/VAD,,NO,90.01 to 383.13,Varies,LOW
+mean_pitch_hz,YES,YES,Librosa/VAD,,NO,70.98 to 284.98,Varies,LOW
+min_pitch_hz,YES,YES,Librosa/VAD,,NO,55.00 to 199.78,Varies,LOW
+pitch_range_hz,YES,YES,Librosa/VAD,,NO,15.60 to 213.09,Varies,LOW
+pitch_std,YES,YES,Librosa/VAD,,NO,4.00 to 54.64,Varies,LOW
+shimmer_percent,YES,NO,None,Requires ASR System,YES,1.00 to 7.33,NaN,MEDIUM
+mean_rms_energy,YES,YES,Librosa/VAD,,NO,0.01 to 0.32,Varies,LOW
+rms_energy_std,YES,YES,Librosa/VAD,,NO,0.00 to 0.17,Varies,LOW
+spectral_bandwidth,YES,YES,Librosa/VAD,,NO,619.00 to 2768.70,Varies,MEDIUM
+spectral_centroid,YES,YES,Librosa/VAD,,NO,700.20 to 2700.00,Varies,HIGH
+spectral_flatness,YES,YES,Librosa/VAD,,NO,0.00 to 0.07,Varies,MEDIUM
+spectral_rolloff,YES,YES,Librosa/VAD,,NO,1503.30 to 6777.80,Varies,HIGH
+voice_intensity_db,YES,NO,None,Requires ASR System,YES,51.28 to 78.61,NaN,LOW
+zero_crossing_rate,YES,YES,Librosa/VAD,,NO,0.02 to 0.15,Varies,LOW
+mfcc_01_mean,YES,YES,Librosa/VAD,,NO,-502.54 to -404.42,Varies,MEDIUM
+mfcc_01_std,YES,YES,Librosa/VAD,,NO,45.00 to 45.00,Varies,LOW
+mfcc_02_mean,YES,YES,Librosa/VAD,,NO,48.86 to 100.31,Varies,LOW
+mfcc_02_std,YES,YES,Librosa/VAD,,NO,7.69 to 16.07,Varies,MEDIUM
+mfcc_03_mean,YES,YES,Librosa/VAD,,NO,-31.10 to 15.31,Varies,LOW
+mfcc_03_std,YES,YES,Librosa/VAD,,NO,0.92 to 9.68,Varies,MEDIUM
+mfcc_04_mean,YES,YES,Librosa/VAD,,NO,-30.84 to 35.04,Varies,LOW
+mfcc_04_std,YES,YES,Librosa/VAD,,NO,0.60 to 9.42,Varies,LOW
+mfcc_05_mean,YES,YES,Librosa/VAD,,NO,-31.93 to 32.01,Varies,LOW
+mfcc_05_std,YES,YES,Librosa/VAD,,NO,1.01 to 9.05,Varies,LOW
+mfcc_06_mean,YES,YES,Librosa/VAD,,NO,-36.01 to 29.04,Varies,MEDIUM
+mfcc_06_std,YES,YES,Librosa/VAD,,NO,1.20 to 8.63,Varies,LOW
+mfcc_07_mean,YES,YES,Librosa/VAD,,NO,-34.85 to 29.50,Varies,LOW
+mfcc_07_std,YES,YES,Librosa/VAD,,NO,1.08 to 9.00,Varies,LOW
+mfcc_08_mean,YES,YES,Librosa/VAD,,NO,-31.66 to 28.68,Varies,MEDIUM
+mfcc_08_std,YES,YES,Librosa/VAD,,NO,0.60 to 9.14,Varies,MEDIUM
+mfcc_09_mean,YES,YES,Librosa/VAD,,NO,-28.85 to 38.00,Varies,LOW
+mfcc_09_std,YES,YES,Librosa/VAD,,NO,0.60 to 8.87,Varies,LOW
+mfcc_10_mean,YES,YES,Librosa/VAD,,NO,-31.23 to 31.44,Varies,LOW
+mfcc_10_std,YES,YES,Librosa/VAD,,NO,0.90 to 8.72,Varies,LOW
+mfcc_11_mean,YES,YES,Librosa/VAD,,NO,-35.54 to 34.32,Varies,MEDIUM
+mfcc_11_std,YES,YES,Librosa/VAD,,NO,1.20 to 8.72,Varies,LOW
+mfcc_12_mean,YES,YES,Librosa/VAD,,NO,-29.67 to 30.91,Varies,MEDIUM
+mfcc_12_std,YES,YES,Librosa/VAD,,NO,0.80 to 8.55,Varies,LOW
+mfcc_13_mean,YES,YES,Librosa/VAD,,NO,-31.88 to 32.01,Varies,LOW
+mfcc_13_std,YES,YES,Librosa/VAD,,NO,0.90 to 9.54,Varies,LOW
+audio_available,YES,YES,Librosa/VAD,,NO,0.00 to 1.00,Varies,LOW

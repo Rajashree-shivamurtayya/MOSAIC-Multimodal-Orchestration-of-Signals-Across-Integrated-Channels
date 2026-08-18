@@ -1,0 +1,350 @@
+column_name,group,dtype,observed_range,missing_count,in_core_set,description
+participant_id,01_Identity,categorical,"P001, P002, P003, P004, P005, P006 …",0,YES,Pseudonymous research ID. Never store real identity here.
+question_start_timestamp,01_Identity,categorical,"2026-01-12 09:36:36, 2026-01-12 09:37:15, 2026-01-12 09:37:53, 2026-01-12 09:38:17, 2026-01-12 09:39:09, 2026-01-12 09:39:40 …",0,,Question start timestamp.
+session_date,01_Identity,categorical,"2026-01-12, 2026-01-13, 2026-01-14, 2026-01-15, 2026-01-16, 2026-01-17 …",0,,Session date.
+session_id,01_Identity,categorical,"S001, S002, S003, S004, S005, S006 …",0,YES,One recording session per participant.
+trial_id,01_Identity,categorical,"S001T01, S001T02, S001T03, S001T04, S001T05, S001T06 …",0,YES,Primary key. One question/answer trial. Unique across the dataset.
+trial_index,01_Identity,integer,1 … 10,0,YES,Position of the trial within the session (1-10). Arousal habituates as this rises.
+expected_answer_type,02_Question,categorical,"text, binary",0,,Expected answer type.
+question_category,02_Question,categorical,"control, probe, knowledge, memory_based, personal",0,YES,Question category.
+question_difficulty,02_Question,float,0.05 … 0.9,0,YES,"Cognitive load imposed by the question, 0-1. Drives latency, pauses and arousal."
+question_id,02_Question,categorical,"Q01, Q16, Q13, Q09, Q11, Q20 …",0,YES,Question id.
+question_text,02_Question,categorical,"Please state your first name., Did you open the drawer?, What is the capital of Karnataka?, What colour was the folder on the table in room 2?, Describe what you did in the previous room., Is there anything about this task you have not mentioned? …",0,,Question text.
+question_type,02_Question,categorical,"short_answer, yes_no, open_ended",0,YES,Question type.
+age,03_Demographics,integer,18 … 40,0,YES,Age.
+age_group,03_Demographics,categorical,"21-23, 24-26, 27+, 18-20",0,,Age group.
+bmi,03_Demographics,float,16 … 33.9,0,,Bmi.
+dominant_hand,03_Demographics,categorical,"right, left",0,,Dominant hand.
+education_level,03_Demographics,categorical,"UG_year_2, PG, UG_year_3, UG_year_4",0,,Education level.
+height_cm,03_Demographics,float,143.6 … 189.2,0,,Height cm.
+native_language,03_Demographics,categorical,"Hindi, Tamil, Kannada, Telugu, Malayalam, English",0,,Native language.
+sex,03_Demographics,categorical,"F, M",0,YES,Sex.
+wears_glasses,03_Demographics,integer,0 … 1,0,,Wears glasses.
+weight_kg,03_Demographics,float,36.8 … 94.4,0,,Weight kg.
+answer_duration_seconds,04_GroundTruth,float,0.358 … 48.85,0,YES,Answer duration seconds.
+answer_length_syllables,04_GroundTruth,integer,1 … 139,0,,Answer length syllables.
+answer_length_words,04_GroundTruth,integer,1 … 75,0,YES,Answer length words.
+deception_instruction,04_GroundTruth,categorical,"disclose, conceal",0,,Deception instruction.
+experiment_condition,04_GroundTruth,categorical,"instructed_truth, instructed_deception",0,,Which instruction the participant was given for this trial.
+experimenter_confidence,04_GroundTruth,float,0.625 … 1,0,,Experimenter confidence.
+ground_truth_binary,04_GroundTruth,integer,0 … 1,0,YES,"TARGET. 0 = truthful, 1 = deceptive. From the experimental protocol, never from a model."
+ground_truth_label,04_GroundTruth,categorical,"truthful, deceptive",0,YES,Text form of the target.
+participant_answer,04_GroundTruth,categorical,"[TRANSCRIPT_REDACTED], No, Yes",0,,Participant answer.
+baseline_heart_rate_bpm,05_Physio_Cardiac,float,47.1 … 91.9,42,YES,"HR in the pre-question baseline window. Compare every HR feature against this, not against a population norm."
+heart_rate_bpm,05_Physio_Cardiac,float,45 … 110.1,42,YES,Mean HR during the answer window.
+heart_rate_change_from_baseline,05_Physio_Cardiac,float,-15.32 … 22.11,42,YES,Computed as heart_rate_bpm - baseline_heart_rate_bpm. The single most useful cardiac feature.
+heart_rate_percent_change_from_baseline,05_Physio_Cardiac,float,-24.74 … 30.84,42,,Heart rate percent change from baseline.
+heart_rate_range,05_Physio_Cardiac,float,-4.46 … 28.21,42,,Heart rate range.
+heart_rate_recovery_rate,05_Physio_Cardiac,float,-31.08 … 3.627,42,,Heart rate recovery rate.
+heart_rate_std,05_Physio_Cardiac,float,0.78 … 15.45,42,YES,Heart rate std.
+heart_rate_variability,05_Physio_Cardiac,float,5 … 136.2,42,,Heart rate variability.
+max_heart_rate_bpm,05_Physio_Cardiac,float,47 … 112.5,42,,Max heart rate bpm.
+mean_heart_rate_bpm,05_Physio_Cardiac,float,45.9 … 100.8,42,,Mean heart rate bpm.
+mean_rr_interval_ms,05_Physio_Cardiac,float,595.5 … 1308,42,,Mean rr interval ms.
+min_heart_rate_bpm,05_Physio_Cardiac,float,41.8 … 89.2,42,,Min heart rate bpm.
+nn50_count,05_Physio_Cardiac,float,0 … 13,42,,Nn50 count.
+pnn50_percent,05_Physio_Cardiac,float,0 … 62,42,YES,Percent of successive RR intervals differing by >50 ms. Derived from rmssd_ms.
+rmssd_ms,05_Physio_Cardiac,float,5 … 136.2,42,YES,Short-term HRV. Falls as sympathetic arousal rises.
+sdnn_ms,05_Physio_Cardiac,float,6 … 182.6,42,YES,Overall HRV. Correlated with rmssd_ms by construction.
+std_rr_interval_ms,05_Physio_Cardiac,float,6 … 182.6,42,,Std rr interval ms.
+baseline_spo2_percent,06_Physio_SpO2,float,94.98 … 100,42,YES,Baseline spo2 percent.
+during_question_spo2,06_Physio_SpO2,float,94.82 … 100,0,,During question spo2.
+pre_question_spo2,06_Physio_SpO2,float,94.98 … 100,0,,Pre question spo2.
+spo2_change_from_baseline,06_Physio_SpO2,float,-2.311 … 2.408,42,YES,Spo2 change from baseline.
+spo2_delta_pre_to_question,06_Physio_SpO2,float,-1.153 … 0.915,42,,Spo2 delta pre to question.
+spo2_max,06_Physio_SpO2,float,95.61 … 100.6,42,,Spo2 max.
+spo2_min,06_Physio_SpO2,float,94.13 … 99.41,42,,Spo2 min.
+spo2_percent,06_Physio_SpO2,float,94.62 … 100,42,YES,"Blood oxygen during the answer window. Weak deception signal by design - keep it, do not lean on it."
+spo2_range,06_Physio_SpO2,float,0.099 … 3.188,42,,Spo2 range.
+spo2_std,06_Physio_SpO2,float,0.05 … 1.013,42,,Spo2 std.
+baseline_perfusion_index,07_Physio_PPG,float,0.3 … 11,42,,Baseline perfusion index.
+perfusion_index,07_Physio_PPG,float,0.15 … 14.02,42,YES,PPG perfusion. Falls with stress vasoconstriction. Also drives PPG signal quality.
+perfusion_index_change_from_baseline,07_Physio_PPG,float,-3.612 … 4.444,42,YES,Perfusion index change from baseline.
+ppg_baseline_drift,07_Physio_PPG,float,-0.1682 … 0.2049,42,,Ppg baseline drift.
+ppg_noise_level,07_Physio_PPG,float,0.0294 … 0.1318,42,,Ppg noise level.
+ppg_peak_count,07_Physio_PPG,float,6 … 13,42,,Ppg peak count.
+ppg_signal_energy,07_Physio_PPG,float,0.0072 … 311.6,42,,Ppg signal energy.
+ppg_snr_db,07_Physio_PPG,float,7.59 … 34,42,,Ppg snr db.
+pulse_amplitude,07_Physio_PPG,float,0.03 … 5.885,42,,Pulse amplitude.
+pulse_fall_time_ms,07_Physio_PPG,float,150.5 … 367.9,42,,Pulse fall time ms.
+pulse_rise_time_ms,07_Physio_PPG,float,98.6 … 203.3,42,,Pulse rise time ms.
+pulse_signal_quality,07_Physio_PPG,float,0.253 … 1,42,YES,0-1 PPG quality from SNR and motion. Low values attenuate every physiological feature.
+pulse_width_ms,07_Physio_PPG,float,254.1 … 562.5,42,,Pulse width ms.
+sensor_contact_quality,07_Physio_PPG,float,0.491 … 1,42,,Sensor contact quality.
+articulation_rate_wpm,08_Audio_Timing,float,82.7 … 218.4,58,,Articulation rate wpm.
+audio_duration_seconds,08_Audio_Timing,float,0.358 … 48.85,0,,Audio duration seconds.
+response_latency_ms,08_Audio_Timing,float,140 … 2353,58,YES,Silence between end of question and first word. Strongest single audio feature.
+silence_duration_seconds,08_Audio_Timing,float,0 … 8.453,58,,Silence duration seconds.
+speaking_rate_wpm,08_Audio_Timing,float,82.7 … 218.4,58,YES,Words per minute over the answer.
+speech_duration_seconds,08_Audio_Timing,float,0.284 … 42.83,58,YES,Speech duration seconds.
+speech_hesitation_score,08_Audio_Timing,float,-0.6805 … 10.52,58,,Speech hesitation score.
+speech_to_silence_ratio,08_Audio_Timing,float,0.267 … 1307,58,,Speech to silence ratio.
+syllable_rate,08_Audio_Timing,float,1.959 … 7.767,58,,Syllable rate.
+time_to_first_word_ms,08_Audio_Timing,float,140 … 2421,58,,Time to first word ms.
+word_count,08_Audio_Timing,integer,1 … 75,0,,Word count.
+long_pause_count,09_Audio_Pauses,float,0 … 7,58,,Long pause count.
+max_pause_duration_ms,09_Audio_Pauses,float,98.2 … 1902,58,,Max pause duration ms.
+mean_pause_duration_ms,09_Audio_Pauses,float,90 … 835.5,58,YES,Mean pause duration ms.
+pause_count,09_Audio_Pauses,float,0 … 14,58,YES,Pause count.
+pause_duration_std,09_Audio_Pauses,float,10 … 493.2,58,,Pause duration std.
+pause_ratio,09_Audio_Pauses,float,0 … 0.7185,58,YES,Computed as silence_duration_seconds / audio_duration_seconds.
+short_pause_count,09_Audio_Pauses,float,0 … 8,58,,Short pause count.
+ah_count,10_Audio_Fillers,float,0 … 5,58,,Ah count.
+er_count,10_Audio_Fillers,float,0 … 3,58,,Er count.
+filler_word_count,10_Audio_Fillers,float,0 … 19,58,YES,Filler word count.
+filler_word_rate,10_Audio_Fillers,float,0 … 2.5,58,YES,Computed as filler_word_count / word_count.
+like_count,10_Audio_Fillers,float,0 … 4,58,,Like count.
+other_filler_count,10_Audio_Fillers,float,0 … 2,58,,Other filler count.
+uh_count,10_Audio_Fillers,float,0 … 13,58,,Uh count.
+um_count,10_Audio_Fillers,float,0 … 10,58,,Um count.
+you_know_count,10_Audio_Fillers,float,0 … 3,58,,You know count.
+block_count,11_Audio_Disfluency,float,0 … 3,58,YES,Block count.
+false_start_count,11_Audio_Disfluency,float,0 … 5,58,,False start count.
+hesitation_count,11_Audio_Disfluency,float,0 … 24,58,YES,Hesitation count.
+hesitation_rate,11_Audio_Disfluency,float,0 … 7.388,58,YES,Computed as hesitation_count / speech_duration_seconds.
+prolongation_count,11_Audio_Disfluency,float,0 … 7,58,YES,Prolongation count.
+repetition_count,11_Audio_Disfluency,float,0 … 9,58,YES,Repetition count.
+self_correction_count,11_Audio_Disfluency,float,0 … 5,58,,Self correction count.
+sound_repetition_count,11_Audio_Disfluency,float,0 … 3,58,,Sound repetition count.
+stutter_detected,11_Audio_Disfluency,float,0 … 1,58,,Stutter detected.
+stutter_event_count,11_Audio_Disfluency,float,0 … 14,58,YES,Computed as repetition_count + prolongation_count + block_count.
+stutter_frequency,11_Audio_Disfluency,float,0 … 2,58,,Stutter frequency.
+syllable_repetition_count,11_Audio_Disfluency,float,0 … 5,58,,Syllable repetition count.
+word_repetition_count,11_Audio_Disfluency,float,0 … 7,58,,Word repetition count.
+hnr_db,12_Audio_Pitch_Quality,float,12.61 … 29.09,58,YES,Harmonics-to-noise ratio. Falls as voice quality degrades.
+jitter_percent,12_Audio_Pitch_Quality,float,0.1 … 1.81,58,YES,Cycle-to-cycle pitch perturbation. Rises with vocal tension.
+max_pitch_hz,12_Audio_Pitch_Quality,float,90.01 … 383.1,58,,Max pitch hz.
+mean_pitch_hz,12_Audio_Pitch_Quality,float,70.98 … 285,58,YES,Mean pitch hz.
+min_pitch_hz,12_Audio_Pitch_Quality,float,55 … 199.8,58,,Min pitch hz.
+pitch_range_hz,12_Audio_Pitch_Quality,float,15.6 … 213.1,58,YES,Pitch range hz.
+pitch_std,12_Audio_Pitch_Quality,float,4 … 54.64,58,YES,Pitch std.
+shimmer_percent,12_Audio_Pitch_Quality,float,1 … 7.335,58,YES,Cycle-to-cycle amplitude perturbation.
+mean_rms_energy,13_Audio_Spectral,float,0.01389 … 0.3232,58,YES,Mean rms energy.
+rms_energy_std,13_Audio_Spectral,float,0.00376 … 0.1694,58,,Rms energy std.
+spectral_bandwidth,13_Audio_Spectral,float,619 … 2769,58,,Spectral bandwidth.
+spectral_centroid,13_Audio_Spectral,float,700.2 … 2700,58,YES,Spectral centroid.
+spectral_flatness,13_Audio_Spectral,float,0.002 … 0.069,58,,Spectral flatness.
+spectral_rolloff,13_Audio_Spectral,float,1503 … 6778,58,,Spectral rolloff.
+voice_intensity_db,13_Audio_Spectral,float,51.28 … 78.61,58,,Voice intensity db.
+zero_crossing_rate,13_Audio_Spectral,float,0.0156 … 0.1512,58,YES,Zero crossing rate.
+mfcc_01_mean,14_Audio_MFCC,float,-502.5 … -404.4,58,,"Mel-frequency cepstral coefficient 1 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_01_std,14_Audio_MFCC,float,45 … 45,58,,"Mel-frequency cepstral coefficient 1 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_02_mean,14_Audio_MFCC,float,48.86 … 100.3,58,,"Mel-frequency cepstral coefficient 2 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_02_std,14_Audio_MFCC,float,7.69 … 16.07,58,,"Mel-frequency cepstral coefficient 2 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_03_mean,14_Audio_MFCC,float,-31.1 … 15.31,58,,"Mel-frequency cepstral coefficient 3 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_03_std,14_Audio_MFCC,float,0.919 … 9.68,58,,"Mel-frequency cepstral coefficient 3 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_04_mean,14_Audio_MFCC,float,-30.84 … 35.04,58,,"Mel-frequency cepstral coefficient 4 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_04_std,14_Audio_MFCC,float,0.6 … 9.42,58,,"Mel-frequency cepstral coefficient 4 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_05_mean,14_Audio_MFCC,float,-31.93 … 32.01,58,,"Mel-frequency cepstral coefficient 5 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_05_std,14_Audio_MFCC,float,1.006 … 9.053,58,,"Mel-frequency cepstral coefficient 5 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_06_mean,14_Audio_MFCC,float,-36.01 … 29.04,58,,"Mel-frequency cepstral coefficient 6 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_06_std,14_Audio_MFCC,float,1.199 … 8.635,58,,"Mel-frequency cepstral coefficient 6 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_07_mean,14_Audio_MFCC,float,-34.85 … 29.5,58,,"Mel-frequency cepstral coefficient 7 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_07_std,14_Audio_MFCC,float,1.081 … 9.004,58,,"Mel-frequency cepstral coefficient 7 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_08_mean,14_Audio_MFCC,float,-31.66 … 28.68,58,,"Mel-frequency cepstral coefficient 8 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_08_std,14_Audio_MFCC,float,0.6 … 9.139,58,,"Mel-frequency cepstral coefficient 8 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_09_mean,14_Audio_MFCC,float,-28.85 … 38,58,,"Mel-frequency cepstral coefficient 9 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_09_std,14_Audio_MFCC,float,0.6 … 8.873,58,,"Mel-frequency cepstral coefficient 9 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_10_mean,14_Audio_MFCC,float,-31.23 … 31.44,58,,"Mel-frequency cepstral coefficient 10 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_10_std,14_Audio_MFCC,float,0.898 … 8.723,58,,"Mel-frequency cepstral coefficient 10 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_11_mean,14_Audio_MFCC,float,-35.54 … 34.32,58,,"Mel-frequency cepstral coefficient 11 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_11_std,14_Audio_MFCC,float,1.199 … 8.72,58,,"Mel-frequency cepstral coefficient 11 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_12_mean,14_Audio_MFCC,float,-29.67 … 30.91,58,,"Mel-frequency cepstral coefficient 12 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_12_std,14_Audio_MFCC,float,0.802 … 8.554,58,,"Mel-frequency cepstral coefficient 12 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_13_mean,14_Audio_MFCC,float,-31.88 … 32.01,58,,"Mel-frequency cepstral coefficient 13 (mean). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+mfcc_13_std,14_Audio_MFCC,float,0.896 … 9.535,58,,"Mel-frequency cepstral coefficient 13 (std). MFCC 1 tracks energy, 2-3 track spectral shape, 4-13 carry weak arousal signal."
+face_area_pixels,15_Vision_Face,float,1.772e+04 … 1.086e+05,56,,Face area pixels.
+face_detected,15_Vision_Face,float,0 … 1,0,,Face detected.
+face_detection_confidence,15_Vision_Face,float,0.803 … 0.999,56,YES,Face detection confidence.
+face_height_pixels,15_Vision_Face,float,152.9 … 378.6,56,,Face height pixels.
+face_occlusion_ratio,15_Vision_Face,float,0.0001 … 0.281,56,,Face occlusion ratio.
+face_width_pixels,15_Vision_Face,float,115.9 … 286.8,56,,Face width pixels.
+landmark_detection_confidence,15_Vision_Face,float,0.7701 … 0.9982,56,,Landmark detection confidence.
+baseline_left_eye_openness,16_Vision_Eye,float,0.2135 … 0.3534,56,YES,Baseline left eye openness.
+baseline_right_eye_openness,16_Vision_Eye,float,0.2077 … 0.3508,56,,Baseline right eye openness.
+blink_count,16_Vision_Eye,float,0 … 27,56,YES,Blink count.
+blink_delta_pre_to_answer,16_Vision_Eye,float,-18.69 … 29.23,56,YES,Computed as blink_rate_per_minute - pre_question_blink_rate. Better feature than raw blink rate.
+blink_duration_std,16_Vision_Eye,float,20.6 … 85.7,56,,Blink duration std.
+blink_rate_per_minute,16_Vision_Eye,float,3 … 42.99,56,YES,Blinks per minute during the answer window.
+eye_aspect_ratio_left,16_Vision_Eye,float,0.2045 … 0.3719,56,,Eye aspect ratio left.
+eye_aspect_ratio_right,16_Vision_Eye,float,0.2087 … 0.3682,56,,Eye aspect ratio right.
+eye_closure_duration_ms,16_Vision_Eye,float,0 … 7342,56,YES,Total time the eyes were closed across the answer window.
+eye_openness_variance,16_Vision_Eye,float,5e-05 … 0.01,56,,Eye openness variance.
+left_eye_openness,16_Vision_Eye,float,0.2045 … 0.3719,56,YES,Left eye openness.
+left_eye_openness_delta,16_Vision_Eye,float,-0.0544 … 0.0467,56,YES,Computed as left_eye_openness minus its baseline-window value.
+long_blink_count,16_Vision_Eye,float,0 … 5,56,YES,Blinks longer than a normal closure. Associated with cognitive load.
+mean_eye_aspect_ratio,16_Vision_Eye,float,0.2107 … 0.3618,0,YES,Mean of left and right EAR. Lower under cognitive load.
+right_eye_openness,16_Vision_Eye,float,0.2087 … 0.3682,56,,Right eye openness.
+right_eye_openness_delta,16_Vision_Eye,float,-0.0483 … 0.0552,56,,Right eye openness delta.
+baseline_left_eyebrow_eye_distance,16b_Vision_Eyebrow,float,0.2884 … 0.5756,56,YES,"The same measure during the pre-question baseline window. People differ hugely in resting brow height, so only the change from this value is meaningful."
+baseline_right_eyebrow_eye_distance,16b_Vision_Eyebrow,float,0.2883 … 0.5481,56,,Baseline right eyebrow eye distance.
+eyebrow_asymmetry,16b_Vision_Eyebrow,float,0 … 0.05142,56,YES,Absolute difference between left and right delta. Asymmetric brow movement is associated with deliberate rather than spontaneous expression.
+eyebrow_movement_score,16b_Vision_Eyebrow,float,0.00017 … 0.09986,56,YES,Mean absolute brow delta across both sides.
+eyebrow_raise_duration_ms,16b_Vision_Eyebrow,float,0 … 815.4,56,,Eyebrow raise duration ms.
+eyebrow_raise_event_count,16b_Vision_Eyebrow,float,0 … 8,56,YES,Discrete raise events detected in the answer window.
+eyebrow_raise_rise_time_ms,16b_Vision_Eyebrow,float,80 … 567.1,56,,Eyebrow raise rise time ms.
+left_eyebrow_acceleration,16b_Vision_Eyebrow,float,-12.43 … 17.15,56,,Rate of change of eyebrow velocity.
+left_eyebrow_eye_distance,16b_Vision_Eyebrow,float,0.2645 … 0.6228,56,YES,"Distance from left brow centre to left eye centre, divided by inter-ocular distance. Dividing by inter-ocular distance cancels camera distance, so leaning toward the webcam does not look like a brow raise."
+left_eyebrow_height_delta,16b_Vision_Eyebrow,float,-0.04579 … 0.1136,56,YES,"Computed as left_eyebrow_eye_distance minus its baseline. THIS is the eyebrow-raise feature to model on, not the absolute distance."
+left_eyebrow_movement_std,16b_Vision_Eyebrow,float,0.0004 … 0.04351,56,,Left eyebrow movement std.
+left_eyebrow_peak_raise,16b_Vision_Eyebrow,float,-0.1363 … 0.2869,56,,Left eyebrow peak raise.
+left_eyebrow_raise_ratio,16b_Vision_Eyebrow,float,0.8734 … 1.259,56,YES,Current brow-eye distance divided by baseline. Scale-free alternative to the delta.
+left_eyebrow_velocity,16b_Vision_Eyebrow,float,-0.6967 … 0.8078,56,YES,"Peak raise divided by rise time, in inter-ocular units per second. Fast micro-raises differ from slow deliberate ones."
+naive_left_eyebrow_delta_camera_frame,16b_Vision_Eyebrow,float,-0.1718 … 0.1539,56,YES,"DELIBERATELY FLAWED, kept for the report. Brow height in raw camera coordinates, so head pitch contaminates it: tilt the head back and the brows rise in the image without moving a muscle. Compare against left_eyebrow_height_delta - see the Headpose_Check sheet. Do not use as a model input."
+naive_right_eyebrow_delta_camera_frame,16b_Vision_Eyebrow,float,-0.1753 … 0.157,56,,Naive right eyebrow delta camera frame.
+right_eyebrow_acceleration,16b_Vision_Eyebrow,float,-10.22 … 8.487,56,,Right eyebrow acceleration.
+right_eyebrow_eye_distance,16b_Vision_Eyebrow,float,0.2684 … 0.5787,56,,Right eyebrow eye distance.
+right_eyebrow_height_delta,16b_Vision_Eyebrow,float,-0.04063 … 0.08615,56,YES,Right eyebrow height delta.
+right_eyebrow_movement_std,16b_Vision_Eyebrow,float,0.0002 … 0.03325,56,,Right eyebrow movement std.
+right_eyebrow_peak_raise,16b_Vision_Eyebrow,float,-0.108 … 0.1529,56,,Right eyebrow peak raise.
+right_eyebrow_raise_ratio,16b_Vision_Eyebrow,float,0.8903 … 1.209,56,,Right eyebrow raise ratio.
+right_eyebrow_velocity,16b_Vision_Eyebrow,float,-0.7431 … 0.6456,56,,Right eyebrow velocity.
+baseline_gaze_x,17_Vision_Gaze,float,-0.1965 … 0.2044,56,YES,Baseline gaze x.
+baseline_gaze_y,17_Vision_Gaze,float,-0.184 … 0.1851,56,,Baseline gaze y.
+gaze_deviation_degrees,17_Vision_Gaze,float,0.2 … 20.75,56,YES,Angular deviation of gaze from the camera axis.
+gaze_horizontal_deviation,17_Vision_Gaze,float,0.131 … 27.45,56,,Gaze horizontal deviation.
+gaze_shift_count,17_Vision_Gaze,float,0 … 12,56,YES,Gaze shift count.
+gaze_shift_frequency,17_Vision_Gaze,float,0 … 9.99,56,,Gaze shift frequency.
+gaze_stability,17_Vision_Gaze,float,0.1003 … 1,56,,Gaze stability.
+gaze_velocity_deg_s,17_Vision_Gaze,float,0 … 122.2,56,YES,Angular gaze speed. High values mean darting eyes; note that looking away is NOT evidence of deception.
+gaze_vertical_deviation,17_Vision_Gaze,float,0.049 … 21.43,56,,Gaze vertical deviation.
+gaze_x,17_Vision_Gaze,float,-1 … 1,56,,Gaze x.
+gaze_x_delta,17_Vision_Gaze,float,-1.145 … 1.158,56,YES,Computed as gaze_x minus baseline_gaze_x. Corrects for a participant's habitual gaze offset.
+gaze_y,17_Vision_Gaze,float,-1 … 1,56,,Gaze y.
+gaze_y_delta,17_Vision_Gaze,float,-1.101 … 1.165,56,YES,Gaze y delta.
+looking_away_ratio,17_Vision_Gaze,float,0 … 0.8816,56,YES,Fraction of the answer window not looking at the camera.
+time_looking_at_camera_seconds,17_Vision_Gaze,float,0.225 … 36.86,56,,Time looking at camera seconds.
+time_looking_away_seconds,17_Vision_Gaze,float,0 … 37.71,56,,Time looking away seconds.
+baseline_head_pitch,18_Vision_HeadPose,float,-4.88 … 3.93,56,YES,Baseline head pitch.
+baseline_head_roll,18_Vision_HeadPose,float,-3.37 … 3.29,56,,Baseline head roll.
+baseline_head_yaw,18_Vision_HeadPose,float,-11.02 … 11.01,56,YES,Head yaw during the pre-question baseline window.
+head_motion_score,18_Vision_HeadPose,float,0.025 … 1.359,56,YES,Normalised mean of yaw/pitch/roll variability.
+head_movement_count,18_Vision_HeadPose,float,0 … 14,56,YES,Head movement count.
+head_movement_velocity_deg_s,18_Vision_HeadPose,float,0.664 … 71.03,56,YES,Angular head speed over the answer window.
+head_pitch_degrees,18_Vision_HeadPose,float,-26.67 … 19.8,56,YES,Head pitch degrees.
+head_pitch_delta,18_Vision_HeadPose,float,-26.41 … 20.33,56,YES,Computed as head_pitch_degrees minus baseline_head_pitch. This is the term that contaminates the naive_* eyebrow columns.
+head_pitch_std,18_Vision_HeadPose,float,0.2 … 10.55,56,,Head pitch std.
+head_roll_degrees,18_Vision_HeadPose,float,-14.89 … 18.71,56,YES,Head roll degrees.
+head_roll_delta,18_Vision_HeadPose,float,-14.03 … 18.29,56,,Head roll delta.
+head_roll_std,18_Vision_HeadPose,float,0.1 … 8.141,56,,Head roll std.
+head_yaw_degrees,18_Vision_HeadPose,float,-24.33 … 30.28,56,YES,Head yaw degrees.
+head_yaw_delta,18_Vision_HeadPose,float,-23.85 … 29.54,56,YES,Computed as head_yaw_degrees minus baseline_head_yaw. Head pose must be tracked so that head movement is not mistaken for facial movement.
+head_yaw_std,18_Vision_HeadPose,float,0.3 … 14.78,56,,Head yaw std.
+angry_expression_probability,19_Vision_Expression,float,0.0013 … 0.1696,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+disgust_expression_probability,19_Vision_Expression,float,0.0008 … 0.0759,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+dominant_expression,19_Vision_Expression,categorical,"neutral, fear, surprise",0,YES,Dominant expression.
+expression_change_count,19_Vision_Expression,float,0 … 10,56,,Expression change count.
+expression_entropy,19_Vision_Expression,float,0.1875 … 1.817,56,,Expression entropy.
+expression_stability,19_Vision_Expression,float,0.0909 … 1,56,YES,Computed as 1 / (1 + expression_change_count). Higher means a steadier face.
+facial_expression_confidence,19_Vision_Expression,float,0.2785 … 0.95,56,YES,Facial expression confidence.
+fear_expression_probability,19_Vision_Expression,float,0.0003 … 0.4415,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+happy_expression_probability,19_Vision_Expression,float,0.0158 … 0.2897,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+neutral_expression_probability,19_Vision_Expression,float,0.0913 … 0.9667,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+sad_expression_probability,19_Vision_Expression,float,0.002 … 0.2366,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+surprise_expression_probability,19_Vision_Expression,float,0.0006 … 0.3812,56,,Expression probability. The seven probability columns sum to 1.0 per row.
+au01_intensity,20_Vision_ActionUnits,float,0 … 4.768,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au02_intensity,20_Vision_ActionUnits,float,0 … 5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au04_intensity,20_Vision_ActionUnits,float,0 … 5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au05_intensity,20_Vision_ActionUnits,float,0 … 4.569,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au06_intensity,20_Vision_ActionUnits,float,0 … 3.847,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au07_intensity,20_Vision_ActionUnits,float,0 … 4.446,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au09_intensity,20_Vision_ActionUnits,float,0 … 4.176,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au10_intensity,20_Vision_ActionUnits,float,0 … 4.5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au12_intensity,20_Vision_ActionUnits,float,0 … 3.749,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au14_intensity,20_Vision_ActionUnits,float,0 … 5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au15_intensity,20_Vision_ActionUnits,float,0 … 4.734,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au17_intensity,20_Vision_ActionUnits,float,0 … 5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au20_intensity,20_Vision_ActionUnits,float,0 … 4.431,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au23_intensity,20_Vision_ActionUnits,float,0 … 5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au25_intensity,20_Vision_ActionUnits,float,0 … 3.959,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au26_intensity,20_Vision_ActionUnits,float,0 … 4.405,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+au45_intensity,20_Vision_ActionUnits,float,0 … 5,56,,Facial Action Coding System AU intensity 0-5. AU04/07/14/45 rise with arousal; AU06/12 (genuine smile) fall.
+facial_action_unit_activity,20_Vision_ActionUnits,float,0.1701 … 2.093,56,,Mean intensity across all 17 AUs.
+facial_movement_score,20_Vision_ActionUnits,float,0.1679 … 1.825,56,YES,Facial movement score.
+jaw_movement_score,21_Vision_Mouth,float,0.3686 … 1.028,56,,Jaw movement score.
+lip_movement_score,21_Vision_Mouth,float,0.582 … 1.229,56,YES,Lip movement score.
+mouth_aspect_ratio,21_Vision_Mouth,float,0.2349 … 0.6145,56,,Mouth aspect ratio.
+mouth_movement_frequency,21_Vision_Mouth,float,2.09 … 6.025,56,,Mouth movement frequency.
+body_motion_score,22_Vision_Body,float,0.01 … 0.8473,56,,Body motion score.
+lean_forward_ratio,22_Vision_Body,float,0 … 0.7631,56,,Lean forward ratio.
+posture_change_count,22_Vision_Body,float,0 … 7,56,,Posture change count.
+shoulder_angle_degrees,22_Vision_Body,float,-8.07 … 9.35,56,,Shoulder angle degrees.
+facial_landmark_acceleration_mean,22b_Vision_Motion,float,0.0383 … 0.7771,56,,Facial landmark acceleration mean.
+facial_landmark_velocity_max,22b_Vision_Motion,float,0.02487 … 0.3875,56,,Facial landmark velocity max.
+facial_landmark_velocity_mean,22b_Vision_Motion,float,0.00647 … 0.116,56,YES,Mean landmark speed in inter-ocular units per second.
+facial_motion_mean,22b_Vision_Motion,float,0.2868 … 1.529,56,YES,"Mean per-frame landmark displacement across the whole face, averaged over the answer window."
+facial_motion_peak,22b_Vision_Motion,float,0.4579 … 3.619,56,YES,Largest per-frame facial displacement in the window.
+facial_motion_std,22b_Vision_Motion,float,0.0714 … 0.937,56,,Facial motion std.
+during_question_hr,23_Temporal_Windows,float,45 … 100.4,42,,During question hr.
+during_question_voice_energy,23_Temporal_Windows,float,0.00152 … 0.0784,0,,During question voice energy.
+energy_delta_pre_to_answer,23_Temporal_Windows,float,0.00924 … 0.2403,0,,Energy delta pre to answer.
+hr_delta_answer_to_post,23_Temporal_Windows,float,-13.64 … 12.43,42,,Hr delta answer to post.
+hr_delta_pre_to_question,23_Temporal_Windows,float,-9.07 … 12.78,42,,Hr delta pre to question.
+hr_delta_question_to_answer,23_Temporal_Windows,float,-7.74 … 11.31,42,,Hr delta question to answer.
+peak_response_time_seconds,23_Temporal_Windows,float,0.207 … 30.72,0,,Peak response time seconds.
+post_answer_blink_rate,23_Temporal_Windows,float,3 … 32.05,0,,Post answer blink rate.
+post_answer_hr,23_Temporal_Windows,float,45 … 98,42,,Post answer hr.
+pre_question_blink_rate,23_Temporal_Windows,float,3 … 31.67,0,,Pre question blink rate.
+pre_question_hr,23_Temporal_Windows,float,47.1 … 91.9,42,,Pre question hr.
+pre_question_voice_energy,23_Temporal_Windows,float,0.00262 … 0.09237,0,,Pre question voice energy.
+reaction_time_seconds,23_Temporal_Windows,float,0.14 … 2.353,0,,Reaction time seconds.
+recovery_time_seconds,23_Temporal_Windows,float,0.4 … 15.75,0,,Recovery time seconds.
+facial_behavior_score,24_Engineered_Scores,float,-2.272 … 4.183,56,,Facial behavior score.
+overall_behavioral_change_score,24_Engineered_Scores,float,-1.995 … 4.517,0,,Overall behavioral change score.
+physiological_change_score,24_Engineered_Scores,float,-3.949 … 2.947,0,,Physiological change score.
+voice_change_score,24_Engineered_Scores,float,-2.366 … 4.244,0,,Voice change score.
+annotation_status,25_DataQuality,categorical,complete,0,,Annotation status.
+audio_clipping_ratio,25_DataQuality,float,0.00012 … 0.12,58,,Audio clipping ratio.
+audio_quality_score,25_DataQuality,float,0.4466 … 1,58,YES,0-1 from SNR. Below 0.30 the trial is flagged POOR.
+audio_signal_to_noise_ratio,25_DataQuality,float,16.97 … 42,58,,Audio signal to noise ratio.
+duplicate_record_flag,25_DataQuality,integer,0 … 0,0,,Duplicate record flag.
+missing_data_percent,25_DataQuality,float,0 … 40.92,0,YES,Missing data percent.
+missing_feature_count,25_DataQuality,integer,0 … 124,0,,Missing feature count.
+motion_artifact_score,25_DataQuality,float,0.015 … 5.119,0,,Motion artifact score.
+outlier_flag,25_DataQuality,integer,0 … 1,0,,Outlier flag.
+overall_trial_quality,25_DataQuality,categorical,"GOOD, POOR, WARNING",0,YES,"GOOD / WARNING / POOR. Route POOR trials to review, do not feed them to the model silently."
+oximeter_signal_quality,25_DataQuality,float,0.2529 … 1,42,YES,Oximeter signal quality.
+quality_control_status,25_DataQuality,categorical,"passed, review_required",0,,Quality control status.
+video_available,25_DataQuality,integer,0 … 1,0,YES,Video available.
+video_blur_score,25_DataQuality,float,0.0185 … 0.3528,56,,Video blur score.
+video_brightness_score,25_DataQuality,float,0.3027 … 1,56,,Video brightness score.
+video_quality_score,25_DataQuality,float,0.6141 … 1,56,YES,"0-1 from blur, brightness and occlusion."
+ambient_noise_db,26_Environment,float,28 … 60.8,0,,Ambient noise db.
+background_type,26_Environment,categorical,"plain_wall, lab_bench, curtain",0,,Background type.
+camera_angle_degrees,26_Environment,float,-22.3 … 20.5,0,,Camera angle degrees.
+camera_distance_cm,26_Environment,float,41.5 … 83.2,0,,Camera distance cm.
+camera_fps,26_Environment,integer,30 … 30,0,,Camera fps.
+camera_resolution,26_Environment,categorical,1280x720,0,,Camera resolution.
+lighting_level_lux,26_Environment,float,90 … 528,0,,Lighting level lux.
+microphone_distance_cm,26_Environment,float,18 … 59,0,,Microphone distance cm.
+microphone_type,26_Environment,categorical,laptop_builtin,0,,Microphone type.
+oximeter_finger,26_Environment,categorical,"left_index, right_index, left_middle",0,,Oximeter finger.
+oximeter_model,26_Environment,categorical,MAX30102_ESP32C3,0,,Oximeter model.
+room_humidity_percent,26_Environment,float,33.6 … 84.3,0,,Room humidity percent.
+room_temperature_celsius,26_Environment,float,19.8 … 32.6,0,,Room temperature celsius.
+caffeine_amount_mg,27_ParticipantState,float,0 … 239,0,,Caffeine amount mg.
+caffeine_consumed,27_ParticipantState,integer,0 … 1,0,,Caffeine consumed.
+exercise_before_test,27_ParticipantState,integer,0 … 1,0,,Exercise before test.
+resting_time_before_test_minutes,27_ParticipantState,float,2 … 13.1,0,,Resting time before test minutes.
+sleep_duration_hours,27_ParticipantState,float,3 … 10.3,0,,Sleep duration hours.
+time_since_exercise_minutes,27_ParticipantState,float,10 … 188,2430,,Time since exercise minutes.
+time_since_last_meal_minutes,27_ParticipantState,float,15 … 398,0,,Time since last meal minutes.
+audio_available,28_ModalityFlags,integer,0 … 1,0,YES,Audio available.
+modality_count_available,28_ModalityFlags,integer,2 … 3,0,,Modality count available.
+physiological_available,28_ModalityFlags,integer,0 … 1,0,YES,Physiological available.
+audio_model_prediction,29_ModelOutputs,integer,0 … 1,0,,Audio model prediction.
+audio_model_probability,29_ModelOutputs,float,0.0393 … 0.9892,0,YES,Out-of-fold P(deceptive) from the audio-only model.
+computer_vision_model_prediction,29_ModelOutputs,integer,0 … 1,0,,Computer vision model prediction.
+computer_vision_model_probability,29_ModelOutputs,float,0.0024 … 0.9856,0,YES,Out-of-fold P(deceptive) from the vision-only model.
+fusion_model_prediction,29_ModelOutputs,integer,0 … 1,0,YES,Fusion model prediction.
+fusion_model_probability,29_ModelOutputs,float,0.0403 … 0.9652,0,YES,Out-of-fold P(deceptive) from late fusion over the three modality probabilities.
+model_version,29_ModelOutputs,categorical,fusion_lr_v1,0,,Model version.
+physiological_model_prediction,29_ModelOutputs,integer,0 … 1,0,,Physiological model prediction.
+physiological_model_probability,29_ModelOutputs,float,0.1278 … 0.9294,0,YES,"Out-of-fold P(deceptive) from the physiology-only model. Participant-level GroupKFold, no leakage."
+prediction_confidence,29_ModelOutputs,float,0.0001 … 0.9304,0,YES,"Computed as |fusion_probability - 0.5| * 2. Distance from the decision boundary, not a truth guarantee."
+prediction_correct,29_ModelOutputs,integer,0 … 1,0,YES,Evaluation column only. Never use as a model input.
+data_source,30_DatasetMgmt,categorical,SIMULATED,0,,"SIMULATED. This dataset was generated, not collected from human participants."
+dataset_version,30_DatasetMgmt,categorical,mosaic_sim_v1.0,0,,Dataset version.
+feature_extraction_version,30_DatasetMgmt,categorical,featx_v1.2,0,,Feature extraction version.
+mean_blink_duration_ms,30_DatasetMgmt,float,159.2 … 350.6,0,YES,Mean blink duration ms.
+mean_filler_duration_ms,30_DatasetMgmt,float,95.1 … 594.6,0,,Mean filler duration ms.

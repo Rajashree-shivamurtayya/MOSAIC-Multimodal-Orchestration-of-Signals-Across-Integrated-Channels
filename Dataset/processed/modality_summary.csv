@@ -1,0 +1,8 @@
+Column,Counts
+pulse_signal_quality,Missing: 42
+sensor_contact_quality,Missing: 42
+audio_quality_score,Missing: 58
+video_quality_score,Missing: 56
+oximeter_signal_quality,Missing: 42
+overall_trial_quality,Missing: 0
+quality_control_status,Missing: 0

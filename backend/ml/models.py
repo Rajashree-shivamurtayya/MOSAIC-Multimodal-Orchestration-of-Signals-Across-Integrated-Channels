@@ -44,6 +44,25 @@ class PhysioLSTM(nn.Module):
         out = self.fc(out[:, -1, :])
         return out
 
+class VisionMLP(nn.Module):
+    """
+    MLP for processing extracted tabular Vision features (deltas, means, stds).
+    Input shape: (Batch, Features)
+    """
+    def __init__(self, input_size=16, hidden_size=64, num_classes=2):
+        super(VisionMLP, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size // 2)
+        self.fc3 = nn.Linear(hidden_size // 2, num_classes)
+        self.dropout = nn.Dropout(0.3)
+        
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        x = self.dropout(x)
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
 class LateFusionModel(nn.Module):
     """
     Late Fusion Model combining the outputs (embeddings/probabilities) of the individual networks.

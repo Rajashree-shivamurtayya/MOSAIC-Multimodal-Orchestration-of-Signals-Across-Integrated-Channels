@@ -1,0 +1,2 @@
+Late Fusion vs Audio (Accuracy Diff): 0.043 95% CI: [0.030, 0.056]
+Late Fusion vs Audio (AUC Diff): 0.046 95% CI: [0.036, 0.056]

@@ -1,0 +1,17 @@
+LeakageColumn
+ground_truth_binary
+ground_truth_label
+experiment_condition
+deception_instruction
+prediction_confidence
+prediction_correct
+question_id
+question_difficulty
+physiological_model_probability
+audio_model_probability
+computer_vision_model_probability
+fusion_model_probability
+physiological_model_prediction
+audio_model_prediction
+computer_vision_model_prediction
+fusion_model_prediction

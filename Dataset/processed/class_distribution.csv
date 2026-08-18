@@ -1,0 +1,5 @@
+Class,Count,Percentage,Column
+0,1500,50.0,ground_truth_binary
+1,1500,50.0,ground_truth_binary
+truthful,1500,50.0,ground_truth_label
+deceptive,1500,50.0,ground_truth_label
