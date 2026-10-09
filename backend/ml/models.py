@@ -25,10 +25,13 @@ class AudioCNN(nn.Module):
 
 class PhysioLSTM(nn.Module):
     """
-    LSTM for processing sequential Physiological data (HR, SpO2, PPG).
+    LSTM for processing sequential Physiological data.
+    Supports either:
+    1. Sequential extracted features: (Batch, Seq_Length, Features=[HR, HRV, Temp, Quality])
+    2. Normalized raw optical PPG channels: (Batch, Seq_Length, Channels=[IR, RED, Temp])
     Input shape: (Batch, Seq_Length, Features)
     """
-    def __init__(self, input_size, hidden_size=64, num_layers=2, num_classes=2):
+    def __init__(self, input_size=3, hidden_size=64, num_layers=2, num_classes=2):
         super(PhysioLSTM, self).__init__()
         self.hidden_size = hidden_size
         self.num_layers = num_layers

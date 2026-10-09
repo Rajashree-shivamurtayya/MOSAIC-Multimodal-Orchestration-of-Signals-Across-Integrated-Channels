@@ -1,84 +1,202 @@
-import React from 'react';
-import DashboardData from '@/components/DashboardData';
+"use client"
+
+import React from 'react'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { useSystem } from '@/context/SystemContext'
+import { Play, Pause, Camera, Mic, Heart, Activity, Info } from 'lucide-react'
+
+interface StatusCardProps {
+  title: string
+  status: string
+  icon: React.ComponentType<{ className?: string }>
+  description: string
+}
+
+function StatusCard({ title, status, icon: Icon, description }: StatusCardProps) {
+  return (
+    <Card className="glass-panel">
+      <CardHeader className="pb-2">
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Icon className="h-4 w-4 text-[var(--color-primary)]" />
+            {title}
+          </CardTitle>
+          <Badge 
+            variant={
+              status === 'CONNECTED' || status === 'READY' ? 'success' :
+              status === 'PROCESSING' ? 'default' :
+              status === 'SIMULATED' ? 'warning' :
+              status === 'DEGRADED' ? 'warning' :
+              status === 'UNAVAILABLE' ? 'outline' : 'error'
+            }
+          >
+            {status}
+          </Badge>
+        </div>
+        <CardDescription>{description}</CardDescription>
+      </CardHeader>
+    </Card>
+  )
+}
 
 export default function Home() {
+  const { 
+    pipelineStatus, 
+    cameraStatus, 
+    microphoneStatus, 
+    physiologyStatus, 
+    startTrial,
+    stopTrial,
+    sessionInfo,
+    isSimulationMode,
+    setSimulationMode,
+    startCamera,
+    startMicrophone
+  } = useSystem()
+
+  const handleStartTrial = () => {
+    if (sessionInfo.sessionId) {
+      stopTrial()
+    } else {
+      startTrial('P' + Math.floor(Math.random() * 1000).toString().padStart(3, '0'))
+    }
+  }
+
   return (
-    <main className="min-h-screen bg-[#0b0c10] bg-gradient-modern flex flex-col items-center justify-center p-6 relative overflow-hidden">
-      
-      {/* Abstract Background Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--color-brand-primary)] rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[var(--color-brand-secondary)] rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
-      
-      <div className="z-10 w-full max-w-5xl flex flex-col items-center animate-fade-in-up">
-        
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
-            Welcome to <span className="text-gradient">MOSAIC</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Multi-Model Orchestration of Signals Across Integrated Channels. 
-            A multimodal platform for deception-analysis research.
-          </p>
-        </div>
-
-        {/* Dashboard Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          
-          {/* Card 1: Researcher */}
-          <div className="glass p-8 rounded-2xl flex flex-col items-start transition-all hover:scale-[1.02] hover:border-[var(--color-brand-primary)] hover:shadow-[0_0_20px_rgba(0,210,255,0.15)] cursor-pointer">
-            <div className="w-12 h-12 rounded-lg bg-[var(--color-brand-primary)]/20 text-[var(--color-brand-primary)] flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Researcher View</h2>
-            <p className="text-sm text-gray-400 mb-6 flex-grow">
-              Design experiments, manage datasets, and evaluate model performance across multiple modalities.
-            </p>
-            <button className="w-full py-3 px-4 rounded-lg bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 transition-colors">
-              Access Workspace
-            </button>
-          </div>
-
-          {/* Card 2: Operator */}
-          <div className="glass p-8 rounded-2xl flex flex-col items-start transition-all hover:scale-[1.02] hover:border-[var(--color-brand-secondary)] hover:shadow-[0_0_20px_rgba(58,123,213,0.15)] cursor-pointer">
-            <div className="w-12 h-12 rounded-lg bg-[var(--color-brand-secondary)]/20 text-[var(--color-brand-secondary)] flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Operator Console</h2>
-            <p className="text-sm text-gray-400 mb-6 flex-grow">
-              Run active trials, monitor physiological sensors, and oversee data acquisition pipelines in real-time.
-            </p>
-            <button className="w-full py-3 px-4 rounded-lg bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 transition-colors">
-              Start Session
-            </button>
-          </div>
-
-          {/* Card 3: Live Monitor */}
-          <div className="glass p-8 rounded-2xl flex flex-col items-start transition-all hover:scale-[1.02] hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer">
-            <div className="w-12 h-12 rounded-lg bg-white/10 text-white flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 13.5 12 17.25 19.5 9.75M12 21a9.0 9.0 0 1 1 0-18 9 9 0 0 1 0 18Z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Device Status</h2>
-            <p className="text-sm text-gray-400 mb-6 flex-grow">
-              Verify ESP32-C3 hardware integration, camera feed, and audio device synchronization.
-            </p>
-            <button className="w-full py-3 px-4 rounded-lg bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 transition-colors">
-              Run Diagnostics
-            </button>
-          </div>
-        </div>
-
-        {/* Live Backend Data Integration */}
-        <DashboardData />
-
+    <div className="space-y-6 animate-fade-in-up">
+      <div>
+        <h2 className="text-2xl font-bold tracking-tight">System Overview</h2>
+        <p className="text-[var(--color-text-secondary)] mt-1">
+          Multimodal Orchestration of Signals Across Integrated Channels
+        </p>
       </div>
-    </main>
-  );
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatusCard 
+          title="Pipeline" 
+          status={pipelineStatus} 
+          icon={Activity} 
+          description="Main orchestrator status"
+        />
+        <StatusCard 
+          title="Camera" 
+          status={cameraStatus} 
+          icon={Camera} 
+          description="Phase 7.2 Vision module"
+        />
+        <StatusCard 
+          title="Microphone" 
+          status={microphoneStatus} 
+          icon={Mic} 
+          description="Phase 8 Audio module"
+        />
+        <StatusCard 
+          title="Physiology" 
+          status={physiologyStatus} 
+          icon={Heart} 
+          description="Phase 9 MAX30102 + ESP32"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="col-span-2 glass-panel">
+          <CardHeader>
+            <CardTitle>Session Control</CardTitle>
+            <CardDescription>Manage active trials and data collection</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center gap-4 p-4 rounded-lg bg-[var(--color-bg-panel)] border border-[var(--color-border-subtle)]">
+              <div className="flex-1">
+                <p className="text-sm font-medium">Data Source Mode</p>
+                <p className="text-xs text-[var(--color-text-muted)] mt-1">
+                  {isSimulationMode 
+                    ? "Running in Software Validation Mode using existing MOSAIC dataset."
+                    : "Running with Live Sensor Data (Hardware Connected)."}
+                </p>
+              </div>
+              <Button 
+                variant={isSimulationMode ? "secondary" : "outline"} 
+                onClick={async () => {
+                  if (isSimulationMode) {
+                    setSimulationMode(false)
+                    await startCamera()
+                    await startMicrophone()
+                  } else {
+                    setSimulationMode(true)
+                  }
+                }}
+              >
+                {isSimulationMode ? "Switch to Live Sensors" : "Switch to Simulation"}
+              </Button>
+            </div>
+
+            <div className="flex items-center gap-4 justify-between mt-6 pt-4 border-t border-[var(--color-border-subtle)]">
+              <div>
+                {sessionInfo.sessionId ? (
+                  <div>
+                    <p className="text-sm font-medium text-[var(--color-success)]">Trial in progress</p>
+                    <p className="text-xs text-[var(--color-text-muted)]">Session: {sessionInfo.sessionId} | Trial: {sessionInfo.trialId}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-sm font-medium text-[var(--color-text-muted)]">System idle</p>
+                    <p className="text-xs text-[var(--color-text-muted)]">Ready for new session</p>
+                  </div>
+                )}
+              </div>
+              <Button 
+                onClick={handleStartTrial}
+                variant={sessionInfo.sessionId ? "danger" : "default"}
+                size="lg"
+                className="gap-2"
+              >
+                {sessionInfo.sessionId ? (
+                  <><Pause className="h-4 w-4" /> Stop Trial</>
+                ) : (
+                  <><Play className="h-4 w-4" /> Start New Trial</>
+                )}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="glass-panel">
+          <CardHeader>
+            <CardTitle>Inference Engine</CardTitle>
+            <CardDescription>Trained Multimodal Artifacts (Dataset/models)</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-[var(--color-text-secondary)]">Late Fusion (fusion_model.joblib)</span>
+              <Badge variant="success">READY</Badge>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-[var(--color-text-secondary)]">Vision (vision_pipeline.joblib)</span>
+              <Badge variant="success">READY</Badge>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-[var(--color-text-secondary)]">Audio (audio_pipeline.joblib)</span>
+              <Badge variant="success">READY</Badge>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-[var(--color-text-secondary)]">Physiology (physiology_pipeline.joblib)</span>
+              <Badge variant="success">READY</Badge>
+            </div>
+
+            <div className="mt-4 pt-4 border-t border-[var(--color-border-subtle)]">
+              <div className="flex items-start gap-2 p-3 rounded bg-[var(--color-bg-base)] text-xs text-[var(--color-text-muted)]">
+                <Info className="h-4 w-4 flex-shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                <p>
+                  This system analyzes multimodal behavioural and physiological signals. 
+                  It does not establish whether a person is actually lying.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
 }
